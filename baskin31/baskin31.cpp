@@ -1,4 +1,5 @@
-﻿#include <iostream>
+﻿// 베스킨라빈스 31게임
+#include <iostream>
 #include <string>
 #include <cstdlib>
 #include <ctime>
@@ -60,9 +61,7 @@ int main()
             lastNumber = getUser(lastNumber);
             cout << endl;
             
-            lastNumber = getComputer(lastNumber);
-
-            
+            lastNumber = getComputer(lastNumber);   
         }
         
         if (lastNumber >= 31)
