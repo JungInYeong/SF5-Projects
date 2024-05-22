@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 #include <cstdlib>
 #include <ctime>
@@ -6,10 +6,12 @@ using namespace std;
 
 int getComputer(int lastNumber)
 {
-	int numCount = (rand() % 3) + 1;
-	for (int i = 0; i <= numCount; i++)
+	int numCount = (rand() % 2) + 1;        
+    cout << "ì»´í“¨í„°ê°€ ë¶€ë¥¸ ìˆ«ì!" << endl;
+	for (int i = 0; i <= numCount; ++i)
 	{
-		cout << lastNumber + i << " ";
+       
+		cout << lastNumber + i << endl;
 
 	}
 	cout << endl;
@@ -21,19 +23,23 @@ int getUser(int lastNumber)
 {
     int numCount = -1;
 
-    while (numCount < 1 || numCount > 3) {
-        cout << "¸î °³ÀÇ ¼ıÀÚ¸¦ ¸»ÇÏ½Ã°Ú½À´Ï±î? (1-3): ";
+    while (numCount < 1 || numCount > 3)
+    {
+        cout << "ëª‡ ê°œì˜ ìˆ«ìë¥¼ ë§í•˜ì‹œê² ìŠµë‹ˆê¹Œ? (1-3): ";
         cin >> numCount;
 
-        // ¹üÀ§ ¹ş¾î³­ °ªÀÌ ÀÔ·ÂµÇ¸é °æ°í ¸Ş½ÃÁö Ãâ·Â
-        if (numCount < 1 || numCount > 3) {
-            cout << "1~3 »çÀÌÀÇ ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä." << endl;
-            cin.clear(); // ½ºÆ®¸² ÇÃ·¡±×¸¦ ÃÊ±âÈ­.
+        // ë²”ìœ„ ë²—ì–´ë‚œ ê°’ì´ ì…ë ¥ë˜ë©´ ê²½ê³  ë©”ì‹œì§€ ì¶œë ¥
+        if (numCount < 1 || numCount > 3) 
+        {
+            cout << "1~3 ì‚¬ì´ì˜ ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”." << endl;
+            cin.clear(); // ìŠ¤íŠ¸ë¦¼ í”Œë˜ê·¸ë¥¼ ì´ˆê¸°í™”.
         }
     }
-
-    for (int i = 1; i <= numCount; ++i) {
-        cout << lastNumber + i << " ";
+    cout << "ì‚¬ìš©ìê°€ ë¶€ë¥¸ ìˆ«ì!" << endl;
+    for (int i = 1; i <= numCount; ++i)
+    {
+       
+        cout << lastNumber + i << endl;
     }
     cout << endl;
 
@@ -51,25 +57,23 @@ int main()
     {
         if (UserTurn)
         {
-            cout << "»ç¿ëÀÚ°¡ ºÎ¸¥ ¼ıÀÚ!" << endl;
             lastNumber = getUser(lastNumber);
             cout << endl;
-        }
-        else
-        {
-            cout << "ÄÄÇ»ÅÍ°¡ ºÎ¸¥ ¼ıÀÚ!" << endl;
+            
             lastNumber = getComputer(lastNumber);
-            cout << endl;
+
+            
         }
-        if (lastNumber >= 31) 
+        
+        if (lastNumber >= 31)
         {
-            if (UserTurn) // »ç¿ëÀÚ°¡ 31 ¿ÜÃÆÀ»¶§
+            if (UserTurn)
             {
-                cout << "°ÔÀÓ Á¾·á! ÄÄÇ»ÅÍÀÇ ½Â¸®ÀÔ´Ï´Ù." << endl;
+                cout << "ê²Œì„ ì¢…ë£Œ! ì‚¬ìš©ìì˜ ìŠ¹ë¦¬ì…ë‹ˆë‹¤." << endl;
             } 
-            else  // ÄÄÇ»ÅÍ 31 ¿ÜÃÆÀ»¶§
+            else
             {
-                cout << "°ÔÀÓ Á¾·á! »ç¿ëÀÚÀÇ ½Â¸®ÀÔ´Ï´Ù." << endl;
+                cout << "ê²Œì„ ì¢…ë£Œ! ì»´í“¨í„°ì˜ ìŠ¹ë¦¬ì…ë‹ˆë‹¤." << endl;
             }
             break;
         }
