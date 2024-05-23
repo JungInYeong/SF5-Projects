@@ -1,4 +1,4 @@
-﻿// 베스킨라빈스 31게임
+﻿// 프로젝트 1 베스킨라빈스 31게임
 #include <iostream>
 #include <string>
 #include <cstdlib>

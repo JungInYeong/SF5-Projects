@@ -34,7 +34,7 @@ int main()
 		// 중복 단어 검사
 		if (find(save_Word.begin(), save_Word.end(), next_Word) != save_Word.end())
 		{
-			cout << "이미 입력된 단어입니다. 다른 단어를 입력하세요." << endl << endl;
+			cout << "중복된 단어입니다." << endl << endl;
 			continue;
 		}
 		clock_t endTime = clock();
