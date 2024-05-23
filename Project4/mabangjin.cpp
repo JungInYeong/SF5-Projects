@@ -8,9 +8,9 @@ using namespace std;
 
 int main()
 {
-	int n, count = 0;
+	int n;
 	int row, col = 0;
-	int i = 0, j = 0;
+	
 
 	cout << "마방진의 행 혹은 열의 수를 자연수로 입력해주세요 : ";
 	cin >> n;
@@ -35,31 +35,37 @@ int main()
 
 	row = 0, col = n / 2, arr[row][col] = 1; // 열 가운데 설정 1대입
 
-	for ( i = 2; i <= (arr.size() * arr[0].size()); i++)
+	for (int i = 2; i <= (arr.size() * arr[0].size()); i++)
 	{
 		// cout << arr.size() << " " << arr[0].size() << " " << i << endl; i가 2부터 안올라감 ? 왜그러냐? i = arr[row][col] 해서 그렇다.
+		int next_row = row - 1;	// 현재 위치에서 한 칸 위
+		int next_col = col + 1;	// 현재 위치에서 한 칸 오른쪽
+		
+		// 이동한 위치가 배열의 경계를 벗어나면 반대쪽 끝으로 이동
+		if (next_row < 0)
+		{	// 행이 0보다 작으면 마지막 행(n-1)으로 설정	
+			next_row = n - 1;
+		}
+		if (next_col >= n)
+		{	// 열이 n보다 크거나 같으면 첫 번째 열(0)로 설정
+			next_col = 0;
+		}
 
-		row--;
-		col--;
-		if (row < 0)
-		{	// 만약 칸이 없으면 그 너머의 칸인 반대칸 숫자 대입
-			row = n - 1;
+		// 대각선에 이미 숫자가 있는 경우
+		if (arr[next_row][next_col] != 0)
+		{	
+			next_row = row + 1;	// 행을 한 칸 아래(row+1)로 이동
+			next_col = col;		// 열은 그대로 유지
 		}
-		if (col < 0)
-		{
-			col = n - 1;
-		}
-		if (arr[row][col] != 0)
-		{	// 대각선 칸에 숫자가 있다면 아래로
-			row++;
-		}
-		arr[row][col] = i;
+		arr[next_row][next_col] = i;
+		row = next_row;
+		col = next_col;
 	}
 
 
 	for (int i = 0; i < arr.size(); ++i) {
 		for (int j = 0; j < arr[0].size(); ++j) {
-			cout << arr[i][j] << " ";
+			cout << arr[i][j] << "\t";
 		}
 		cout << endl;
 	}
