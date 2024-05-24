@@ -43,7 +43,6 @@ int main()
 		cout << endl;
 		SaveWord(save_Word);
 		
-
 	}
 	
 	cout << "타임 오버!" << endl << endl;

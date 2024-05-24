@@ -99,8 +99,7 @@ int main()
                 user_num.push_back(User_Num);
                 break;
             }
-        }
-		
+        }		
 	}
     Com_same(com_num);
     
