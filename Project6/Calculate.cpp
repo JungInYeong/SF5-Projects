@@ -106,7 +106,7 @@ public:
 				op = operation[3];
 			}
 			else {
-				cerr << "Unknown operation" << endl;
+				cerr << "연산자 찾을 수 없음!" << endl;
 				continue;
 			}
 
