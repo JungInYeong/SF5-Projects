@@ -15,7 +15,7 @@ private:
 
 public:
 	Character() {}
-	void PlusWeapon();
+	void PlusWeapon(Weapon* weapon);
 	void Attack();
 
 	string getName() { return this->name; }
