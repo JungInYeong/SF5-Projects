@@ -68,10 +68,10 @@ public:
 		double num1, num2;
 		string operations;
 
-		Operation* add = new Add();
-		Operation* sub = new Sub();
-		Operation* mul = new Mul();
-		Operation* div = new Div();
+		//Operation* add = new Add();
+		//Operation* sub = new Sub();
+		//Operation* mul = new Mul();
+		//Operation* div = new Div();
 
 		while (1)
 		{
