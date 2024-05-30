@@ -7,15 +7,17 @@ using namespace std;
 class Weapon
 {
 private:
-	int attack;
-	int attack_num;
+	int attk;
+	int attk_num;
 
 public:
-	int getAttk() { return attack; }
-	int getAttk_n() { return attack_num; }
+	int getAttk() { return attk; }
+	int getAttk_n() { return attk_num; }
 
-	void setAttk(int attack) { this->attack = attack; }
-	void setAttk_n(int attack_num) { this->attack_num = attack_num; }
+	void setAttk(int attk) { this->attk = attk; }
+	void setAttk_n(int attk_num) { this->attk_num = attk_num; }
+
+	virtual void attack() {};
 
 };
 
@@ -23,9 +25,20 @@ class Sword : public Weapon
 {
 public:
 
-
-
-
+	Sword(int attk, int attk_num) {}
+	void attack()override
+	{
+		cout << "Âî¸£±â!" << endl;
+	}
 };
 
+class Gun :public Weapon
+{
+public:
+	Gun(int attk, int attk_num) {}
+	void attack()override
+	{
+		cout << "ÃÑ ½î±â!" << endl;
+	}
+};
 #endif
