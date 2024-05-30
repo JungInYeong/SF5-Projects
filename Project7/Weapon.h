@@ -3,42 +3,65 @@
 #define WEAPON_H
 #include <iostream>
 using namespace std;
+class Monster;
 
 class Weapon
 {
 private:
-	int attk;
-	int attk_num;
+	int damage;
+	int dam_num;
 
 public:
-	int getAttk() { return attk; }
-	int getAttk_n() { return attk_num; }
+	Weapon(int damage, int dam_num) : damage(damage), dam_num(dam_num) {}
+	int getDam() { return damage; }
+	int getDam_n() { return dam_num; }
 
-	void setAttk(int attk) { this->attk = attk; }
-	void setAttk_n(int attk_num) { this->attk_num = attk_num; }
+	void setDam(int damage) { this->damage = damage; }
+	void setDam_n(int dam_num) { this->dam_num = dam_num; }
 
 	virtual void attack() {};
-
+	bool CanDam_n() { return dam_num > 0; }
+	void DamNum() { dam_num; }
 };
 
 class Sword : public Weapon
 {
 public:
 
-	Sword(int attk, int attk_num) {}
+	Sword() :Weapon(5, 3) {}
+
 	void attack()override
 	{
-		cout << "Âî¸£±â!" << endl;
+		if (CanDam_n())
+		{
+			cout << "Âî¸£±â!" << endl;
+			DamNum();
+		}
+		else
+		{
+			cout << "Ä®À» ´õÀÌ»ó »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù." << endl;
+		}
 	}
+
+
 };
 
 class Gun :public Weapon
 {
 public:
-	Gun(int attk, int attk_num) {}
+	Gun() :Weapon(10, 1) {}
+
 	void attack()override
 	{
-		cout << "ÃÑ ½î±â!" << endl;
+		if (CanDam_n())
+		{
+			cout << "ÃÑ ½î±â!" << endl;
+			DamNum();
+		}
+		else
+		{
+			cout << "ÃÑÀ» ´õÀÌ»ó »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù." << endl;
+		}
 	}
 };
 #endif

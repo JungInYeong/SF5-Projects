@@ -7,24 +7,89 @@
 //5. 파일분리하기
 
 #include "Character.h"
+void chooseWeapon(Player& player);
 
 int main()
 {
-	Player p;
-	Sword s(5, 3);
-	Gun g(10, 1);
-	Monster m(3, 50);
+	string playername;
+	cout << "플레이어의 이름을 정해주세요 : ";
+	cin >> playername;
+	Player player(playername);
+	cout << "플레이어 " << player.getName() << "이 생성되었습니다." << endl;
+	
+	chooseWeapon(player);
 
-	int choice;
-	while (1)
+	vector<Monster> monsters;
+	monsters.push_back(Monster(7, 50, "Monster1")); // 첫 번째 몬스터
+	monsters.push_back(Monster(10, 60, "Monster2")); // 두 번째 몬스터
+	monsters.push_back(Monster(15, 70, "Monster3")); // 세 번째 몬스터
+	
+	int defeatedMonsters = 0;
+	while (defeatedMonsters < 3)
 	{
+		cout << "\n*** 몬스터 " << monsters[defeatedMonsters].getName() << " 등장 ***" << endl;
 
+		// 무기 선택
+		chooseWeapon(player);
 
+		// 전투
+		while (player.getHP() > 0 && monsters[defeatedMonsters].getHP() > 0)
+		{
+			cout << "\n플레이어 턴!" << endl;
+			player.attackMonster(monsters[defeatedMonsters]);
+			cout << "몬스터 HP: " << monsters[defeatedMonsters].getHP() << endl;
 
+			if (monsters[defeatedMonsters].getHP() > 0)
+			{
+				cout << "\n몬스터 턴!" << endl;
+				monsters[defeatedMonsters].attack(player);
+				cout << "플레이어 HP: " << player.getHP() << endl;
+			}
+		}
+
+		// 플레이어가 살아있을 경우
+		if (player.getHP() > 0)
+		{
+			cout << "몬스터 " << monsters[defeatedMonsters].getName() << "를 물리쳤습니다!" << endl;
+			defeatedMonsters++;
+			player.Levelup();
+			cout << "레벨업! 현재 레벨: " << player.getLevel() << endl;
+		}
+		// 플레이어가 죽었을 경우
+		else 
+		{
+			cout << "플레이어가 사망했습니다. 다시 몬스터와의 전투를 시작합니다." << endl;
+			player.respawn();
+		}
 	}
 
-	p.setWeapon(&g); // 사용자 총 
+	cout << "\n모든 몬스터를 물리쳤습니다. 게임 종료!" << endl;
 
-	p.setWeapon(&s); // 사용자 검
+	return 0;
+}
 
+
+void chooseWeapon(Player& player)
+{
+	int choice;
+	bool validChoice = false;
+	while (!validChoice)
+	{
+		std::cout << "무기를 선택하세요 (1: 칼, 2: 총): ";
+		std::cin >> choice;
+
+		if (choice == 1) 
+		{
+			player.setWeapon(new Sword());
+			validChoice = true;
+		}
+		else if (choice == 2) 
+		{
+			player.setWeapon(new Gun());
+			validChoice = true;
+		}
+		else {
+			std::cout << "잘못된 선택입니다. 다시 선택하세요." << std::endl;
+		}
+	}
 }
