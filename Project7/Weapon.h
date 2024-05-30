@@ -3,7 +3,8 @@
 #define WEAPON_H
 #include <iostream>
 using namespace std;
-class Monster;
+
+
 
 class Weapon
 {
@@ -21,7 +22,7 @@ public:
 
 	virtual void attack() {};
 	bool CanDam_n() { return dam_num > 0; }
-	void DamNum() { dam_num; }
+	void DamNum() { this->dam_num; }
 };
 
 class Sword : public Weapon
@@ -35,7 +36,7 @@ public:
 		if (CanDam_n())
 		{
 			cout << "Âî¸£±â!" << endl;
-			DamNum();
+			//DamNum();
 		}
 		else
 		{
@@ -56,7 +57,7 @@ public:
 		if (CanDam_n())
 		{
 			cout << "ÃÑ ½î±â!" << endl;
-			DamNum();
+			//DamNum();
 		}
 		else
 		{

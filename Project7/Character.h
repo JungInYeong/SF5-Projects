@@ -7,6 +7,8 @@
 #include "Weapon.h"
 using namespace std;
 
+class Monster;
+
 class Character
 {
 protected:
