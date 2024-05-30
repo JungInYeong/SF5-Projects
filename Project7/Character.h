@@ -1,4 +1,6 @@
 #pragma once
+#ifndef CHARACTER_H
+#define CHARACTER_H
 #include <iostream>
 #include <vector>
 #include <string>
@@ -11,24 +13,18 @@ private:
 	int hp = 0;
 	int level = 0;
 	string name;
-	vector<Weapon*> weapons;
 
 public:
 	Character() {}
-	void PlusWeapon(Weapon* weapon);
-	void Attack(Character& target);
 
-	string getName() { return this->name; }
-	int getHp() { return this->hp; }
-	int getLevel() { return this->level; }
+	string getName() { return name; }
+	int getHP() { return hp; }
+	int getLevel() { return level; }
 
 	void setName(string name) { this->name = name; }
 	void setHP(int hp) { this->hp = hp; }
 	void setLevel(int level) { this->level = level; }
-};
-
-class Player : public Character
-{
 
 
 };
+#endif
